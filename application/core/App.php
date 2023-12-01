@@ -4,7 +4,7 @@ namespace Application\core;
 
 class App
 {
-    protected $controller = 'HomeController';
+    protected $controller = 'LoginController';
     protected $method = 'index';
     protected $page404 = false;
     protected $params = [];

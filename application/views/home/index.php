@@ -11,7 +11,7 @@ include $base . '\..\layout\menu.php';
 </head>
 
 <body>
-    <h4> Bem-Vindo </h4>
+    <h4> Bem-Vindo <?= isset($_SESSION["usuario"]) ? $_SESSION["usuario"] : ''; ?> </h4>
     <h1> Produtos </h1>
     <hr />
 
@@ -19,8 +19,8 @@ include $base . '\..\layout\menu.php';
         <div class="row">
             <?php foreach ($data['produtos'] as $produto) { ?>
                 <div class="col-3">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://www.techsmith.com/blog/wp-content/uploads/2022/03/resize-image.png" alt="Card image cap">
+                    <div class="card mt-4" style="width: 18rem;">
+                        <img class="card-img-top" src="<?= $produto->getImagem() ?>" alt="Card image cap" height="210px">
                         <div class="card-body">
                             <h5 class="card-title"><?= $produto->getNome() ?></h5>
                             <p class="card-text"><?= $produto->getMarca() ?></p>

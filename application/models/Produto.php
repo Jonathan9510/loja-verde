@@ -8,11 +8,13 @@ class Produto
     private $nome;
     private $marca;
     private $preco;
-    public function __construct($nome, $marca, $preco)
+    private $img;
+    public function __construct($nome, $marca, $preco, $img)
     {
         $this->nome = $nome;
         $this->marca = $marca;
         $this->preco = $preco;
+        $this->img = $img;
     }
     public function setCodigo($codigo)
     {
@@ -21,6 +23,10 @@ class Produto
     public function getCodigo()
     {
         return $this->codigo;
+    }
+    public function getImagem()
+    {
+        return $this->img;
     }
     public function getNome()
     {

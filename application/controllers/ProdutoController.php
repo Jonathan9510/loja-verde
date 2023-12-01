@@ -24,8 +24,10 @@ class ProdutoController extends Controller
         $nome = $_POST['nome_produto'];
         $marca = $_POST['marca'];
         $preco = $_POST['preco'];
+        $codigo = ['NULL'];
+        $img = ['NULL'];
         // COMO CONSTRUIR UM OBJETO PRODUTO AQUI
-        $produto = new Produto($nome, $marca, $preco);
+        $produto = new Produto($nome, $marca, $preco, $img, $codigo);
 
         $produtoDAO = new ProdutoDAO();
         $produtoDAO->salvar($produto);
@@ -51,7 +53,7 @@ class ProdutoController extends Controller
         $preco = filter_input(INPUT_POST, "preco");
 
         //CRIA O OBJETO
-        $produto = new Produto($nome, $marca, $preco);
+        $produto = new Produto($nome, $marca, $preco, $codigo);
         $produto->setCodigo($codigo);
         //CRIA O PRODUTO DAO
         $produtoDAO = new ProdutoDAO();

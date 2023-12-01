@@ -37,7 +37,7 @@ class ProdutoDAO {
 
         $produtos = [];
         while ($row = $result->fetch_assoc()) {
-            $produto = new Produto($row["nome"], $row["marca"], $row["preco"]);
+            $produto = new Produto($row["nome"], $row["marca"], $row["preco"], $row["img"]);
             $produto->setCodigo($row["codigo"]);
             array_push($produtos, $produto);
         }
@@ -56,7 +56,7 @@ class ProdutoDAO {
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        $produto = new Produto($row["nome"], $row["marca"], $row["preco"]);
+        $produto = new Produto($row["nome"], $row["marca"], $row["preco"], $row["codigo"]);
         $produto->setCodigo($row["codigo"]);
         return $produto;
     }

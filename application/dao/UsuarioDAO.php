@@ -18,12 +18,34 @@ class UsuarioDAO
         $senha = $usuario->getSenha();
         // 4 - Monta o SQL
         $SQL = "INSERT INTO usuarios(codigo, nome, login, senha) 
-VALUES (null, '$nome', '$login', '$senha')";
+                VALUES (null, '$nome', '$login', '$senha')";
         if ($conn->query($SQL) === TRUE) {
             return true;
         } else {
             echo "Error: " . $SQL . "<br />" . $conn->error;
             return false;
+        }
+    }
+    
+    public function findByLogin($login)
+    {
+        $conexao = new Conexao();
+        $conn = $conexao->getConexao();
+        $SQL = "SELECT * FROM usuarios WHERE login = ?";
+        
+        $stmt = $conn->prepare($SQL);
+        $stmt->bind_param("s", $login);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $usuario = new Usuario($row["nome"], $row["login"], $row["senha"]);
+            $usuario->setCodigo($row["codigo"]);
+            return $usuario;
+        } else {
+            return null;
         }
     }
 
@@ -41,11 +63,8 @@ VALUES (null, '$nome', '$login', '$senha')";
 
     public function atualizar($usuario)
     {
-
-
         $conexao = new Conexao();
         $conn = $conexao->getConexao();
-
         $codigo = $usuario->getCodigo();
         $nome = $usuario->getNome();
         $login = $usuario->getLogin();

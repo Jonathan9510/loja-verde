@@ -1,25 +1,12 @@
 <?php
-session_start();
+$loginController = new LoginController();
 
-$allowed_username = "user";
-$allowed_password = "senha"; 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-
-    if ($username === $allowed_username && $password === $allowed_password) {
-        $_SESSION['user'] = $username;
-        header('Location: index.php');
-        exit;
-    } else {
-        echo "Credenciais inválidas. Tente novamente.";
-    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $loginController->index();
 }
 ?>
 
-<!DOCTYPE html>
+
 <html>
 <head>
     <title>Login</title>
@@ -67,14 +54,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
 <body>
     <div class="login-container">
         <h1>Login</h1>
+        <?php if(isset($_GET['erro'])) {?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error: </strong> <?= $_GET['erro']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php }?>
         <form method="post">
-            <label for="username">Nome de Usuário:</label>
-            <input type="text" name="username" id="username" required>
-            <label for="password">Senha:</label>
-            <input type="password" name="password" id="password" required>
+            <label for="login">Nome de Usuário:</label>
+            <input type="text" name="login" id="login" required>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" required>
             <input type="submit" value="Entrar">
         </form>
     </div>
 </body>
 </html>
-

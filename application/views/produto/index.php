@@ -18,6 +18,7 @@ include $base . '\..\layout\menu.php';
     <table class="table">
         <thead>
             <th>Código</th>
+            <th>Imagem</th>
             <th>Nome</th>
             <th>Marca</th>
             <th>Preço</th>
@@ -28,6 +29,7 @@ include $base . '\..\layout\menu.php';
             <?php foreach ($data['produtos'] as $produto) { ?>
                 <tr>
                     <td><?= $produto->getCodigo() ?> </td>
+                    <td><img src="<?= $produto->getImagem() ?>" class="rounded-circle" width="80px"> </td>
                     <td><?= $produto->getNome() ?> </td>
                     <td><?= $produto->getMarca() ?> </td>
                     <td><?= $produto->getPreco() ?> </td>
