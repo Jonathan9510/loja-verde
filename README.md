@@ -30,7 +30,7 @@
 17. [x] Pesquisar Usuário [0.5]
 18. [x] Alterar Usuário [0.5]
 19. [x] Excluir Usuário [0.5]
-20. [ ] Efetuar Login/Logout do Usuário [1.0]
+20. [x] Efetuar Login/Logout do Usuário [1.0]
 21. [x] Listar Produtos Na página Inicial [1.0]
 22. [x] Listar Produtos com Imagem [2.0]
 23. [x] Adicionar o Modal de Confirmação de exclusão no projeto[1.0]
